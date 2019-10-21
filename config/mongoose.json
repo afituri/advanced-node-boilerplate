@@ -1,0 +1,13 @@
+{
+  "development": {
+    "database": "boilerplate_development",
+    "host": "localhost"
+  },
+  "test": {
+    "database": "boilerplate_test",
+    "host": "localhost"
+  },
+  "production": {
+    "use_env_variable": "MONGODB_URI"
+  }
+}

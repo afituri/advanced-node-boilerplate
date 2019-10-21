@@ -1,0 +1,44 @@
+{
+  "missingEmail": {
+    "code": "missingEmail",
+    "messageEn": "An email is missing.",
+    "messageAr": "الرجاء إدخال بريد إلكتروني .",
+    "status": 400
+  },
+  "missingPassword": {
+    "code": "missingPassword",
+    "messageEn": "A password is missing",
+    "messageAr": "الرجاء إدخال بريد إلكتروني .",
+    "status": 400
+  },
+  "invalidPassword": {
+    "code": "invalidPassword",
+    "messageEn": "Password must be 8 characters or longer and 128 characters or less.",
+    "messageAr": "كلمة المرور يجب أن يتراوح طولها ما بين ٨ و ١٢٨ رمز",
+    "status": 400
+  },
+  "invalidEmail": {
+    "code": "invalidEmail",
+    "messageEn": "Please enter a valid email address.",
+    "messageAr": "الرجاء إدخال بريد إلكتروني صحيح.",
+    "status": 400
+  },
+  "emailExists": {
+    "code": "emailExists",
+    "messageEn": "Account with that email address already exists.",
+    "messageAr": "البريد الإلكتروني المدخل موجود مسبقاً",
+    "status": 409
+  },
+  "unKnownError": {
+    "code": "unKnownError",
+    "messageEn": "unKnown Error.",
+    "messageAr": "خطأ غير معروف.",
+    "status": 400
+  },
+  "userCreated": {
+    "code": "userCreated",
+    "messageEn": "User has been created successfully.",
+    "messageAr": "تم إنشاء مستخدم جديد بنجاح",
+    "status": 201
+  }
+}
