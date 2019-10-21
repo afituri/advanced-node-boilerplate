@@ -15,7 +15,6 @@
     "coverageDirectory": "./.coverage"
   },
   "dependencies": {
-    "@octokit/rest": "^16.28.2",
     "aws-sdk": "^2.548.0",
     "bcrypt": "^3.0.6",
     "bluebird": "^3.7.0",
@@ -38,11 +37,9 @@
     "lru-cache": "5.1.1",
     "marked": "0.6.2",
     "mongoose": "5.6.1",
-    "next": "8.1.0",
     "nprogress": "0.2.0",
     "passport": "0.4.0",
     "passport-google-oauth": "2.0.0",
-    "prop-types": "15.7.2",
     "qs": "6.7.0",
     "request": "2.88.0",
     "require-directory": "^2.1.1",
