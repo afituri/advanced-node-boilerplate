@@ -14,7 +14,7 @@ module.exports = () => {
   // Iterate over all collection
   // removing each and storing the promise
   collectionKeys.forEach(key => {
-    const promise = collections[key].remove();
+    const promise = collections[key].deleteOne();
     promises.push(promise);
   });
 

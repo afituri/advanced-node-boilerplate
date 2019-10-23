@@ -2,63 +2,42 @@
   "name": "boilerplate",
   "version": "0.0.1",
   "license": "MIT",
-  "engines": {
-    "node": "11.15.0"
-  },
   "scripts": {
     "dev": "nodemon server.js --watch server",
     "start": "node server.js",
     "lint": "eslint ./",
-    "test": "jest --coverage",
-    "processes": "ss -lptn 'sport = :8000'",
-    "kill-pud": "kill -9 <pid>"
+    "test": "yarn lint && jest --coverage"
   },
   "jest": {
     "coverageDirectory": "./.coverage"
   },
   "dependencies": {
-    "aws-sdk": "^2.548.0",
+    "aws-sdk": "^2.554.0",
     "bcrypt": "^3.0.6",
-    "bluebird": "^3.7.0",
-    "body-parser": "^1.19.0",
+    "bluebird": "^3.7.1",
     "compression": "1.7.4",
-    "connect-mongo": "3.0.0",
+    "connect-mongo": "3.1.0",
     "cors": "^2.8.5",
-    "dotenv": "8.0.0",
+    "dotenv": "8.2.0",
     "express": "4.17.1",
-    "express-session": "1.16.2",
-    "front-matter": "3.0.2",
-    "googleapis": "40.0.0",
-    "handlebars": "4.1.2",
-    "he": "1.2.0",
-    "helmet": "3.18.0",
-    "highlight.js": "9.15.8",
-    "htmlescape": "1.1.1",
-    "isomorphic-unfetch": "3.0.0",
-    "lodash": "4.17.11",
-    "lru-cache": "5.1.1",
-    "marked": "0.6.2",
-    "mongoose": "5.6.1",
-    "nprogress": "0.2.0",
+    "express-session": "1.17.0",
+    "handlebars": "^4.4.5",
+    "helmet": "3.21.2",
+    "lodash": "4.17.15",
+    "mongoose": "5.7.6",
     "passport": "0.4.0",
-    "passport-google-oauth": "2.0.0",
-    "qs": "6.7.0",
-    "request": "2.88.0",
     "require-directory": "^2.1.1",
-    "sitemap": "2.2.0",
-    "stripe": "7.3.0",
     "validator": "^11.1.0",
-    "winston": "3.2.1",
-    "yarn-upgrade-all": "0.5.0"
+    "winston": "3.2.1"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.19.0",
-    "jest": "24.8.0",
-    "nodemon": "1.19.1",
+    "eslint-plugin-jest": "^22.20.0",
+    "jest": "24.9.0",
+    "nodemon": "1.19.4",
     "supertest": "^4.0.2"
   }
 }
