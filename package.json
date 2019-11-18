@@ -33,7 +33,7 @@
     "lodash": "4.17.11",
     "lru-cache": "5.1.1",
     "marked": "0.6.2",
-    "mongoose": "5.6.1",
+    "mongoose": "5.7.5",
     "nprogress": "0.2.0",
     "passport": "0.4.0",
     "passport-google-oauth": "2.0.0",
