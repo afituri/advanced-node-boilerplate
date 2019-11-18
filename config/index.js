@@ -1,7 +1,6 @@
 const port = process.env.PORT || process.argv[2];
 const host = process.env.HOST;
-const sessionSecret = process.env.SESSION_SECRET || 'abc123';
-const apiUrl = process.env.APIURL;
+const apiUrl = process.env.API_URL;
 
 const aws = {
   region: process.env.AMAZON_SES_REGION,
@@ -13,6 +12,5 @@ module.exports = {
   apiUrl,
   aws,
   host,
-  port,
-  sessionSecret
+  port
 };
