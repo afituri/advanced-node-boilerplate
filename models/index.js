@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bluebird = require('bluebird');
 const User = require('./User');
-const Verification = require('./verification');
+const Verification = require('./Verification');
 
 mongoose.Promise = bluebird;
 
