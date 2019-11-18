@@ -1,0 +1,12 @@
+{
+  "verificationEN": {
+    "from": "Noreply <noreply@fituri.ly>",
+    "subject": "Welcome to Node.js advanced Boiler plate, please verify your account",
+    "message": "<p>Your verification pin is :  {{pin}} </p><p>This pin will expire in 20 minutes after registration.</p>"
+  },
+  "verificationAR": {
+    "from": "Noreply <noreply@fituri.ly>",
+    "subject": "الرجاء قم بتفعيل حسابك",
+    "message": "<p dir=\"rtl\">رمز التفعيل الخاص بك هو : {{pin}}</p><p dir=\"rtl\">سوف تبطل صلاحية هذا الرمز خلال 20 دقيقة</p>"
+  }
+}
