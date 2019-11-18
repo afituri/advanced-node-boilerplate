@@ -1,10 +1,12 @@
 const aws = require('aws-sdk');
 
-function sendEmail(options) {
+const { region, accessKeyId, secretAccessKey } = require('../config').aws;
+// Needs to be refactored with async await style.
+const sendEmail = options => {
   aws.config.update({
-    region: process.env.Amazon_region,
-    accessKeyId: process.env.Amazon_accessKeyId,
-    secretAccessKey: process.env.Amazon_secretAccessKey,
+    region,
+    accessKeyId,
+    secretAccessKey
   });
 
   const ses = new aws.SES({ apiVersion: 'latest' });
@@ -15,19 +17,19 @@ function sendEmail(options) {
         Source: options.from,
         Destination: {
           CcAddresses: options.cc,
-          ToAddresses: options.to,
+          ToAddresses: options.to
         },
         Message: {
           Subject: {
-            Data: options.subject,
+            Data: options.subject
           },
           Body: {
             Html: {
-              Data: options.body,
-            },
-          },
+              Data: options.body
+            }
+          }
         },
-        ReplyToAddresses: options.replyTo,
+        ReplyToAddresses: options.replyTo
       },
       (err, info) => {
         if (err) {
@@ -35,9 +37,9 @@ function sendEmail(options) {
         } else {
           resolve(info);
         }
-      },
+      }
     );
   });
-}
+};
 
 module.exports = sendEmail;

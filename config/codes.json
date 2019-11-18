@@ -29,16 +29,22 @@
     "messageAr": "البريد الإلكتروني المدخل موجود مسبقاً",
     "status": 409
   },
-  "unKnownError": {
-    "code": "unKnownError",
-    "messageEn": "unKnown Error.",
-    "messageAr": "خطأ غير معروف.",
-    "status": 400
+  "serverError": {
+    "code": "serverError",
+    "messageEn": "Unknown server error, please try again later.",
+    "messageAr": " خطأ غير معروف, يرجى المحاولة في وقت لاحق.",
+    "status": 500
   },
   "userCreated": {
     "code": "userCreated",
     "messageEn": "User has been created successfully.",
     "messageAr": "تم إنشاء مستخدم جديد بنجاح",
     "status": 201
+  },
+  "invalidLocale": {
+    "code": "invalidLocale",
+    "messageEn": "Locale most be AR or EN.",
+    "messageAr": "اللغة المستخدمة يجب أن تكون إما AR أو EN.",
+    "status": 400
   }
 }

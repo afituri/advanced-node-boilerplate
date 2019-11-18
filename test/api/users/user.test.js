@@ -1,35 +1,20 @@
-const request = require('supertest');
-const mongoose = require('mongoose');
-const mongo = require('../../../utils/mongo');
-const cleanDB = require('../../../models/seeds/clean');
+const { clean } = require('../../../models/seeds/clean');
+const { seeds } = require('../../../models/seeds/seeds');
 const codes = require('../../../config/codes');
 
-const app = require('../../../server');
 const models = require('../../../models');
 
-process.env.NODE_ENV = 'test';
-const { User } = models;
+const { User, Verification } = models;
 
 describe('User', () => {
   const apiUrl = '/api/v1';
-  const port = 8888;
-  let server;
 
   beforeEach(async () => {
-    server = await app.listen(port);
-    global.agent = request.agent(server);
-    if (!mongoose.connection.readyState) {
-      mongo();
-    }
+    await seeds();
   });
 
   afterEach(async () => {
-    await server.close();
-    await cleanDB();
-  });
-
-  afterAll(async () => {
-    await mongoose.connection.close();
+    await clean();
   });
   // ----------------------------------------
   // User Routes
@@ -39,21 +24,23 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'erlich.bachman@pidepiper.com',
+          email: 'ahmed.fituri@gmail.com',
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',
-          locale: 'en'
+          locale: 'EN'
         })
         .set('Accept', 'application/json');
       const { statusCode, body } = response;
-      const { email, password, phone, name, locale } = body.user;
+      const { id, email, password, phone, name, locale } = body.user;
       expect(statusCode).toBe(codes.userCreated.status);
-      expect(email).toBe('erlich.bachman@pidepiper.com');
+      expect(email).toBe('ahmed.fituri@gmail.com');
       expect(password).toBeUndefined();
       expect(name).toBe('Erlich Bachman');
       expect(phone).toBe('12238383838');
-      expect(locale).toBe('en');
+      expect(locale).toBe('EN');
+      const verification = await Verification.findOne({ userId: id });
+      expect(verification.pin).toBeDefined();
     });
 
     it('Returns an error when an email is missing', async () => {
@@ -63,7 +50,7 @@ describe('User', () => {
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',
-          locale: 'en'
+          locale: 'EN'
         })
         .set('Accept', 'application/json');
       const { statusCode, body } = response;
@@ -78,11 +65,11 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'notvalidemail',
+          email: 'notValidEmail',
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',
-          locale: 'en'
+          locale: 'EN'
         })
         .set('Accept', 'application/json');
       const { statusCode, body } = response;
@@ -97,10 +84,10 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'erlich.bachman@pidepiper.com',
+          email: 'ahmed.fituri@gmail.com',
           phone: '12238383838',
           name: 'Erlich Bachman',
-          locale: 'en'
+          locale: 'EN'
         })
         .set('Accept', 'application/json');
       const { statusCode, body } = response;
@@ -115,11 +102,11 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'erlich.bachman@pidepiper.com',
+          email: 'ahmed.fituri@gmail.com',
           password: 'short',
           phone: '12238383838',
           name: 'Erlich Bachman',
-          locale: 'en'
+          locale: 'EN'
         })
         .set('Accept', 'application/json');
       const { statusCode, body } = response;
@@ -132,21 +119,21 @@ describe('User', () => {
 
     it('Returns an error when an email exists', async () => {
       const user = new User({
-        email: 'erlich.bachman@pidepiper.com',
-        password: 'short',
+        email: 'ahmed.fituri@gmail.com',
+        password: 'iamthefrogman',
         phone: '12238383838',
         name: 'Erlich Bachman',
-        locale: 'en'
+        locale: 'EN'
       });
       await user.save();
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'erlich.bachman@pidepiper.com',
+          email: 'ahmed.fituri@gmail.com',
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',
-          locale: 'en'
+          locale: 'EN'
         })
         .set('Accept', 'application/json');
       const { statusCode, body } = response;
@@ -155,6 +142,25 @@ describe('User', () => {
       expect(code).toBe(codes.emailExists.code);
       expect(messageEn).toBe(codes.emailExists.messageEn);
       expect(messageAr).toBe(codes.emailExists.messageAr);
+    });
+
+    it('Returns an error when passing invalid locale', async () => {
+      const response = await global.agent
+        .post(`${apiUrl}/users`)
+        .send({
+          email: 'ahmed.fituri@gmail.com',
+          password: 'iamthefrogman',
+          phone: '12238383838',
+          name: 'Erlich Bachman',
+          locale: 'ES'
+        })
+        .set('Accept', 'application/json');
+      const { statusCode, body } = response;
+      const { code, messageEn, messageAr } = body;
+      expect(statusCode).toBe(codes.invalidLocale.status);
+      expect(code).toBe(codes.invalidLocale.code);
+      expect(messageEn).toBe(codes.invalidLocale.messageEn);
+      expect(messageAr).toBe(codes.invalidLocale.messageAr);
     });
   });
 });

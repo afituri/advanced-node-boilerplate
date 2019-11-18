@@ -2,7 +2,7 @@ const validator = require('validator');
 const codes = require('../../config/codes');
 
 exports.validateCreateUser = body => {
-  const { email, password } = body;
+  const { email, password, locale } = body;
   if (!email) {
     return codes.missingEmail;
   }
@@ -14,6 +14,9 @@ exports.validateCreateUser = body => {
   }
   if (!validator.isLength(password, { min: 8, max: 128 })) {
     return codes.invalidPassword;
+  }
+  if (locale && locale !== 'EN' && locale !== 'AR') {
+    return codes.invalidLocale;
   }
   return false;
 };
