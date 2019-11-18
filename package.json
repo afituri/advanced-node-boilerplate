@@ -12,6 +12,11 @@
   "jest": {
     "coverageDirectory": "./.coverage"
   },
+  "engines": {
+    "node": ">=12.10.0",
+    "npm": ">=6.10.0",
+    "yarn": ">=1.9.1"
+  },
   "dependencies": {
     "aws-sdk": "^2.573.0",
     "bcrypt": "^3.0.7",
