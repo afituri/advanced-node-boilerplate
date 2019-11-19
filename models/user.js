@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const { Schema } = mongoose;
 
@@ -17,7 +18,8 @@ const mongoSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minlength: 6
+      minlength: 6,
+      select: false
     },
     phone: String,
     isActive: {
@@ -63,6 +65,22 @@ mongoSchema.methods.getPublicFields = function getPublicFields() {
     locale: this.locale,
     isAdmin: this.isAdmin
   };
+};
+
+// Sign JWT and return
+mongoSchema.methods.getSignedJwtToken = function() {
+  return jwt.sign(
+    {
+      id: this._id,
+      name: this.name,
+      email: this.email,
+      role: this.role
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_EXPIRE
+    }
+  );
 };
 
 class UserClass {
