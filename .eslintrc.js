@@ -11,6 +11,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  plugins: ['jest'],
+  plugins: ['jest', 'prettier'],
   rules: {}
 };
