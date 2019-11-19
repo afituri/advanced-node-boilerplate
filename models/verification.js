@@ -8,8 +8,21 @@ const mongoSchema = new Schema({
     required: true,
     ref: 'User'
   },
-  pin: { type: Number, required: true },
-  createdAt: { type: Date, required: true, default: Date.now, expires: 43200 }
+  pin: {
+    type: Number,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  expireAt: {
+    type: Date,
+    required: true,
+    default: Date.now,
+    expires: 60
+  }
 });
 
 const Verification = mongoose.model('Verification', mongoSchema);

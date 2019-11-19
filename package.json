@@ -7,7 +7,7 @@
     "seed": "node models/seeds",
     "start": "node server.js",
     "lint": "eslint ./",
-    "test": "yarn lint && jest --coverage"
+    "test": "yarn lint && jest --coverage --runInBand"
   },
   "jest": {
     "coverageDirectory": "./.coverage"
