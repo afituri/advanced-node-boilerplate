@@ -24,7 +24,7 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'ahmed.fituri@gmail.com',
+          email: 'erlich.bachman@pidepipder.com',
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',
@@ -34,7 +34,7 @@ describe('User', () => {
       const { statusCode, body } = response;
       const { id, email, password, phone, name, locale } = body.user;
       expect(statusCode).toBe(codes.userCreated.status);
-      expect(email).toBe('ahmed.fituri@gmail.com');
+      expect(email).toBe('erlich.bachman@pidepipder.com');
       expect(password).toBeUndefined();
       expect(name).toBe('Erlich Bachman');
       expect(phone).toBe('12238383838');
@@ -84,7 +84,7 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'ahmed.fituri@gmail.com',
+          email: 'erlich.bachman@pidepipder.com',
           phone: '12238383838',
           name: 'Erlich Bachman',
           locale: 'EN'
@@ -102,7 +102,7 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'ahmed.fituri@gmail.com',
+          email: 'erlich.bachman@pidepipder.com',
           password: 'short',
           phone: '12238383838',
           name: 'Erlich Bachman',
@@ -119,7 +119,7 @@ describe('User', () => {
 
     it('Returns an error when an email exists', async () => {
       const user = new User({
-        email: 'ahmed.fituri@gmail.com',
+        email: 'erlich.bachman@pidepipder.com',
         password: 'iamthefrogman',
         phone: '12238383838',
         name: 'Erlich Bachman',
@@ -129,7 +129,7 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'ahmed.fituri@gmail.com',
+          email: 'erlich.bachman@pidepipder.com',
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',
@@ -148,7 +148,7 @@ describe('User', () => {
       const response = await global.agent
         .post(`${apiUrl}/users`)
         .send({
-          email: 'ahmed.fituri@gmail.com',
+          email: 'erlich.bachman@pidepipder.com',
           password: 'iamthefrogman',
           phone: '12238383838',
           name: 'Erlich Bachman',

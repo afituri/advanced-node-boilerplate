@@ -1,13 +1,12 @@
+const asyncHandler = require('express-async-handler');
 const randomize = require('randomatic');
 const validator = require('validator');
 
 const codes = require('../../config/codes');
-const logger = require('../../utils/logs');
-const validation = require('./validator');
-const { apiUrl } = require('../../config');
 const emailService = require('../../services/email');
+const validation = require('./validator');
 
-exports.usersCreate = async (req, res) => {
+exports.usersCreate = asyncHandler(async (req, res, next) => {
   const { User, Verification } = req.models;
   let { email } = req.body;
   const { name, password, locale, picture, phone } = req.body;
@@ -19,14 +18,9 @@ exports.usersCreate = async (req, res) => {
 
   email = validator.normalizeEmail(email, { gmail_remove_dots: false });
 
-  try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(codes.emailExists.status).json(codes.emailExists);
-    }
-  } catch (err) {
-    logger.error(err);
-    return res.status(codes.serverError.status).json(codes.serverError);
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return res.status(codes.emailExists.status).json(codes.emailExists);
   }
 
   const user = new User({
@@ -38,31 +32,20 @@ exports.usersCreate = async (req, res) => {
     picture
   });
 
-  try {
-    await user.save();
-  } catch (err) {
-    logger.error(err);
-    return res.status(codes.serverError.status).json(codes.serverError);
-  }
+  await user.save();
 
   const verification = new Verification({
     userId: user.id,
     pin: randomize('0', 6)
   });
 
-  try {
-    await verification.save();
-    await emailService.sendEmail(`verification${user.locale}`, {
-      pin: verification.pin,
-      url: apiUrl,
-      email: user.email
-    });
-  } catch (err) {
-    logger.error(err);
-    return res.status(codes.serverError.status).json(codes.serverError);
-  }
+  await verification.save();
+  await emailService.sendEmail(`verification${user.locale}`, {
+    pin: verification.pin,
+    email: user.email
+  });
 
   return res
     .status(codes.userCreated.status)
     .json({ user: user.getPublicFields(), info: codes.userCreated });
-};
+});

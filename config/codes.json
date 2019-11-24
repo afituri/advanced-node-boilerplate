@@ -46,5 +46,59 @@
     "messageEn": "Locale most be AR or EN.",
     "messageAr": "اللغة المستخدمة يجب أن تكون إما AR أو EN.",
     "status": 400
+  },
+  "missingPin": {
+    "code": "missingPin",
+    "messageEn": "A pin is missing",
+    "messageAr": "الرجاء إدخال الرمز .",
+    "status": 400
+  },
+  "missingUserId": {
+    "code": "missingUserId",
+    "messageEn": "A userId is missing",
+    "messageAr": "الرجاء إدخال معرف المستخدم",
+    "status": 400
+  },
+  "invalidId": {
+    "code": "invalidId",
+    "messageEn": "Please enter a valid id",
+    "messageAr": "الرجاء إدخال معرف صحيح",
+    "status": 400
+  },
+  "userNotFound": {
+    "code": "userNotFound",
+    "messageEn": "User not found!",
+    "messageAr": "مستخدم غير موجود.",
+    "status": 404
+  },
+  "alreadyVerified": {
+    "code": "alreadyVerified",
+    "messageEn": "User already verified!",
+    "messageAr": "مستخدم معرف مسبقاً.",
+    "status": 400
+  },
+  "expiredPin": {
+    "code": "expiredPin",
+    "messageEn": "Your pin has expired!",
+    "messageAr": "رمز التفعيل منتهي الصلاحية.",
+    "status": 400
+  },
+  "wrongPin": {
+    "code": "wrongPin",
+    "messageEn": "The pin entered doesn't match!",
+    "messageAr": "رمز التفعيل غير صحيح.",
+    "status": 400
+  },
+  "userVerified": {
+    "code": "userVerified",
+    "messageEn": "You account has been verified successfully!",
+    "messageAr": "تم تفعيل حسابك بنجاح.",
+    "status": 200
+  },
+  "pinResent": {
+    "code": "pinResent",
+    "messageEn": "You have resent a verification pin, please check your email!",
+    "messageAr": "لقد تم إرسال رمز تفعيل جديد, يرجى مراجعة بريدك الإلكتروني.",
+    "status": 200
   }
 }

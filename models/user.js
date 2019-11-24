@@ -50,7 +50,7 @@ mongoSchema.pre('save', async function(next) {
 /**
  * Match the user entered password with hashed password in db.
  */
-mongoSchema.methods.validatePassword = async function(password) {
+mongoSchema.methods.validatePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
