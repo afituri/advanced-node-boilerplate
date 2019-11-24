@@ -7,7 +7,7 @@
     "seed": "node models/seeds",
     "start": "node server.js",
     "lint": "eslint ./",
-    "test": "yarn lint && jest --coverage"
+    "test": "yarn lint && jest --coverage --runInBand"
   },
   "jest": {
     "coverageDirectory": "./.coverage"
@@ -26,6 +26,7 @@
     "cors": "^2.8.5",
     "dotenv": "8.2.0",
     "express": "4.17.1",
+    "express-async-handler": "^1.1.4",
     "faker": "^4.1.0",
     "handlebars": "^4.5.3",
     "he": "1.2.0",

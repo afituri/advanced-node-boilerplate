@@ -10,12 +10,13 @@ exports.seeds = async () => {
   // ----------------------------------------
   const users = [];
 
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     users.push(
       new User({
         pseudonym: faker.name.findName(),
         email: faker.internet.email(),
-        password: faker.internet.password()
+        password: faker.internet.password(),
+        isActive: faker.random.boolean()
       })
     );
   }
