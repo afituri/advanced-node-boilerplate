@@ -3,7 +3,6 @@ const isUser = (req, res, next) => {
     res.status(401).json({ error: 'Unauthorized' });
     return;
   }
-
   next();
 };
 
@@ -12,11 +11,10 @@ const isAdmin = (req, res, next) => {
     res.status(401).json({ error: 'Unauthorized' });
     return;
   }
-
   next();
 };
 
 module.exports = {
   isUser,
-  isAdmin,
+  isAdmin
 };

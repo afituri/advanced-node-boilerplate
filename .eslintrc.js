@@ -12,5 +12,7 @@ module.exports = {
     ecmaVersion: 2018
   },
   plugins: ['jest', 'prettier'],
-  rules: {}
+  rules: {
+    'no-unused-vars': ['error', { argsIgnorePattern: 'req|res|next|val' }]
+  }
 };
