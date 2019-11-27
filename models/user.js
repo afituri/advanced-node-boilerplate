@@ -32,8 +32,7 @@ const mongoSchema = new Schema(
       type: String,
       enum: ['EN', 'AR'],
       default: 'AR'
-    },
-    picture: String
+    }
   },
   { timestamps: true }
 );
@@ -66,21 +65,8 @@ mongoSchema.methods.getPublicFields = function getPublicFields() {
 };
 
 class UserClass {
-  static publicFields() {
-    return ['id', 'name', 'email', 'isAdmin', 'locale', 'picture'];
-  }
-
-  static search(query) {
-    return this.find(
-      {
-        $or: [{ email: { $regex: query, $options: 'i' } }]
-      },
-      UserClass.publicFields().join(' ')
-    );
-  }
-
   static async list({ offset = 0, limit = 10 } = {}) {
-    const users = await this.find({})
+    const users = await this.find({}, { password: 0 })
       .sort({ createdAt: -1 })
       .skip(offset)
       .limit(limit);

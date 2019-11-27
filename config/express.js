@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
+const Auth = require('../services/auth');
 const logger = require('../utils/logs');
 
 module.exports = app => {
@@ -13,4 +14,5 @@ module.exports = app => {
   app.use((error, req, res, next) => {
     logger.error(error.status);
   });
+  Auth.attachTo(app);
 };
