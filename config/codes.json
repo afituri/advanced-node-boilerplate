@@ -100,5 +100,15 @@
     "messageEn": "You have resent a verification pin, please check your email!",
     "messageAr": "لقد تم إرسال رمز تفعيل جديد, يرجى مراجعة بريدك الإلكتروني.",
     "status": 200
+  },
+  "notMatch": {
+    "code": "notMatch",
+    "messageEn": "The email or password does not match.",
+    "messageAr": "كلمة المرور أو البريد الإلكتروني غير مطابق.",
+    "status": 401
+  },
+  "ok": {
+    "code": "ok",
+    "status": 200
   }
 }
