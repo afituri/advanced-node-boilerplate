@@ -58,3 +58,5 @@ Public endpoints:
 Protected endpoints:
 
 - List users via GET `/users`
+
+Any contribution to this project of any kind is welcome.
