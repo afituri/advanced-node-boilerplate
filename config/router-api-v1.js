@@ -1,10 +1,11 @@
 const express = require('express');
+const passport = require('passport');
 
 const users = require('../api/users/router');
-const verifications = require('../api/verifications/router');
+const auth = require('../api/auth/router');
 
 const router = express.Router();
-router.use('/users', users);
-router.use('/verifications', verifications);
+router.use('/users', passport.authenticate('jwt', { session: false }), users);
+router.use('/auth', auth);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const port = process.env.PORT || process.argv[2];
 const host = process.env.HOST;
 const apiUrl = process.env.API_URL;
+const jwtSecret = process.env.JWT_SECRET || 'abc123';
 
 const aws = {
   region: process.env.AMAZON_SES_REGION,
@@ -11,6 +12,7 @@ const aws = {
 module.exports = {
   apiUrl,
   aws,
+  jwtSecret,
   host,
   port
 };
