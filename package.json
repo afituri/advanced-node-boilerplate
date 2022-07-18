@@ -28,10 +28,10 @@
     "express": "4.17.1",
     "express-async-handler": "^1.1.4",
     "faker": "^4.1.0",
-    "handlebars": "^4.5.3",
+    "handlebars": "^4.7.7",
     "he": "1.2.0",
     "helmet": "3.21.2",
-    "highlight.js": "9.16.2",
+    "highlight.js": "10.4.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "4.17.15",
     "mongoose": "5.7.11",
@@ -40,7 +40,7 @@
     "randomatic": "^3.1.1",
     "request": "2.88.0",
     "require-directory": "^2.1.1",
-    "validator": "^12.0.0",
+    "validator": "^13.7.0",
     "winston": "3.2.1"
   },
   "devDependencies": {
