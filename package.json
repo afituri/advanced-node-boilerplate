@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.573.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.7.1",
     "compression": "1.7.4",
     "connect-mongo": "3.1.2",
